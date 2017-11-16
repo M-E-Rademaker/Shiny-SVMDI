@@ -1,0 +1,17 @@
+---
+output: md_document
+bibliography: literature.bib
+---
+### Introduction
+
+This page provides data access to the *Support Vector Machines Democracy Indicator (SVMDI)* as 
+proposed by @Gruendler2016 in the [European Journal of Political Economy](http://www.sciencedirect.com/science/article/pii/S0176268016300222).
+
+The approach exploits Support Vector Machines (SMVs), a mathematical algorithm for pattern recognition, 
+which is a nonlinear generalization of the Generalized Portrait algorithm. Using this new algorithm 
+enables computation of a detailed measurement of democracy. The main advantage is that the aggregation 
+strategy of the underlying attributes is not arbitrary (as is typically the case, not only with 
+regard to democracy indices), but is transferred to a nonlinear optimization problem. 
+
+#### Please cite as
+
