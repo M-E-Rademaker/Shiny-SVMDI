@@ -52,10 +52,14 @@ shinyUI({
           ),
           column(width = 4,
                  h3("About the authors"),
-                 tags$div(
+                 tags$div(id = "divImages",
+                   tags$img(id = "images", src = "Klaus_G.png", height="60", width="60"),
                    tags$p(tags$b("Klaus Gründler"), "is a post doc at the University of Wuerzburg, Germany.", 
                           br(), br(), "For more info visit:", 
-                          tags$a(href = "http://klausgruendler.de", "www.klausgruendler.de", target = "_blank")), 
+                          tags$a(href = "http://klausgruendler.de", "www.klausgruendler.de", target = "_blank"))
+                 ),
+                 tags$div(id = "divImages",
+                   tags$img(id = "images", src = "Klaus_G.png", height="60", width="60"),
                    tags$p(tags$b("Tommy Krieger"), "is a research assistant at the University of Konstanz, Germany.", 
                           br(), br(), "For more info visit:", 
                           tags$a(href = "http://klausgruendler.de", "www.thisisnothewebsiteyet.de", target = "_blank"))
