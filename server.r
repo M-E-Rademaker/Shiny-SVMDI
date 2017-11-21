@@ -1,5 +1,7 @@
 shinyServer(function(input, output) {
   
+  withProgress(expr = {load("data/dat_csvmdi.RData")}, message = "Loading... Please wait")
+  
   ### Lineplot
   output$lineplot <- renderPlot({
     
@@ -16,15 +18,24 @@ shinyServer(function(input, output) {
              between(year, input$slider.year[1], input$slider.year[2]))
     
     p <- ggplot(a1, aes(x = year, y = csvmdi)) +
-      geom_line(aes(color = country_new)) +
-      geom_line(data = a2, aes(y = regioniii_csvmdi, color = regioniii)) + 
+      geom_line(aes(color = country_new), size = 1.05) +
+      geom_line(data = a2, aes(y = regioniii_csvmdi, color = regioniii), size = 1.05) + 
       scale_x_continuous(breaks = seq.int(input$slider.year[1], input$slider.year[2], by = 2)) + 
       labs(title = paste0("The CSVMD Index from ", input$slider.year[1], " until ", input$slider.year[2]),
-           subtitle = "The CSVMDI for is a nindex based on bla bla bla support vector machine bla bla.",
            color = "Country/Region",
-           y = "CSVMD Index",
+           y = "SVMD Index",
            x = "Year",
-           caption = "Source: Gründler & Krieger (2016), Democracy and Growth: Evidence from a machine learning indicator")
+           caption = "Source: Gründler & Krieger (2016), Democracy and Growth: Evidence from a machine learning indicator") + 
+      theme(
+        title = element_text(size = 14),
+        axis.title = element_text(size = 12, face = "bold"),
+        legend.text = element_text(size = 11)
+        )
+    
+    if(input$checkbox.dsvmdi == "Yes") {
+      
+      p <- p + geom_line(aes(y = dsvmdi, color = country_new), linetype = "dashed")
+    }
     
     if(input$select.ci == "90% Confidence Intervall") {
       
