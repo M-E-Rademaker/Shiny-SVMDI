@@ -9,7 +9,6 @@ if(!require(shiny)) install.packages("shiny")
 if(!require(tidyverse)) install.packages("tidyverse")
 if(!require(leaflet)) install.packages("leaflet")
 if(!require(maps)) install.packages("maps")
-if(!require(stringr)) install.packages("stringr")
 if(!require(haven)) install.packages("haven")
 if(!require(broom)) install.packages("broom")
 

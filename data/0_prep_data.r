@@ -62,3 +62,4 @@ dat_leaflet <- maps::map(database = "world", regions = iso.expand(unique(dat_cle
 
 ### Save -------------------------------------------------------------------------------------------
 save(list = c("dat_full", "dat_clean", "dat_leaflet", "bins", "pal"), file = "data/dat_csvmdi.RData")
+save(list = c("dat_clean"), file = "data/dat_clean.RData")

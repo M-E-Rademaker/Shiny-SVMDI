@@ -1,6 +1,7 @@
-#spacer{
-  margin: 15px;
-  min-width: 768px;
-	max-width: 1920px;
-	position:relative
+#images{
+    border-radius: 50%;
+}
+
+#divImages{
+  float:left;
 }
