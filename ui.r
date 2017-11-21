@@ -112,13 +112,13 @@ shinyUI({
                "Page created and maintained by Manuel Steiner:", HTML("&nbsp", "&nbsp"), 
                tags$a(href="mailto:manuel.steiner@uni-wuerzburg.de", icon("envelope-o", "fa-lg")),
                HTML("&nbsp", "&nbsp"), 
-               tags$a(href="https://github.com/M-E-Steiner", icon("github", "fa-lg")),
+               tags$a(href="https://github.com/M-E-Steiner", icon("github", "fa-lg"), target = "_blank"),
                HTML("&nbsp", "&nbsp"), 
                tags$a(href="https://www.wiwi.uni-wuerzburg.de/lehrstuhl/qwf/startseite/allgemeines/team/wissenschaftliche_mitarbeiterinnen/", 
-                      icon("globe", "fa-lg")),
+                      icon("globe", "fa-lg"), target = "_blank"),
                HTML("&nbsp", "&nbsp"), 
                tags$a(href="https://stackoverflow.com/users/4046004/manuel-s", 
-                      icon("stack-overflow ", "fa-lg"))
+                      icon("stack-overflow ", "fa-lg"), target = "_blank")
                ) # END p
       ) # END fluidRow
     ) # END fluidPage
