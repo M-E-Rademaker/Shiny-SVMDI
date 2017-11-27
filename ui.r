@@ -1,6 +1,5 @@
 ### UI ---------------------------------------------------------------------------------------------
 
-require(shinythemes)
 shinyUI({
 
   fluidPage(
@@ -54,17 +53,17 @@ shinyUI({
           column(width = 4,
                  h3("About the authors"),
                  tags$div(
-                   tags$img(id = "images", src = "Klaus_G.png", height="60", width="60", style = "border-radius: 50%"),
+                   tags$img(src = "Klaus_G.png", height="60", width="60", style = "border-radius: 50%"),
                    tags$p(strong("Klaus Gründler"), "is a post doc at the University of Wuerzburg, Germany.", 
                           br(), tags$a(href="mailto:klaus.gruendler@uni-wuerzburg.de", icon("envelope-o", "fa-lg")), 
                           HTML("&nbsp", "&nbsp"),  tags$a(href="http://klausgruendler.de/", icon("globe", "fa-lg"), target = "_blank")
                           ) # END p
                  ), # END div
                  tags$div(
-                   tags$img(id = "images", src = "Klaus_G.png", height="60", width="60", style = "border-radius: 50%"),
+                   tags$img(src = "no_avatar.png", height="60", width="60", style = "border-radius: 50%"),
                    tags$p(tags$b("Tommy Krieger"), "is a research assistant at the University of Konstanz, Germany.", 
-                          br(), tags$a(href="mailto:klaus.gruendler@uni-wuerzburg.de", icon("envelope-o", "fa-lg")), 
-                          HTML("&nbsp", "&nbsp"),  tags$a(href="http://klausgruendler.de/", icon("globe", "fa-lg"), target = "_blank")
+                          br(), tags$a(href="mailto:tommy.krieger@uni-konstanz.de", icon("envelope-o", "fa-lg"))
+                          # HTML("&nbsp", "&nbsp"),  tags$a(href="http://klausgruendler.de/", icon("globe", "fa-lg"), target = "_blank")
                    ) # END p
                  ) # END div
           ) # END column
@@ -107,7 +106,9 @@ shinyUI({
     fluidPage(
       fluidRow(
         hr(),
-        tags$p(icon("cc", "fa-lg"), HTML("&nbsp"), "Powered by", tags$a(href = "https://www.rstudio.com/", "RStudio", target = "_blank"), 
+        tags$p(HTML('This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+                    Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.'), 
+               HTML("&nbsp"), "Powered by", tags$a(href = "https://www.rstudio.com/", "RStudio", target = "_blank"), 
                "and", tags$a(href = "https://www.rstudio.com/products/shiny/", "Shiny.", target = "_blank"),
                "Page created and maintained by Manuel Steiner:", HTML("&nbsp", "&nbsp"), 
                tags$a(href="mailto:manuel.steiner@uni-wuerzburg.de", icon("envelope-o", "fa-lg")),
@@ -119,7 +120,7 @@ shinyUI({
                HTML("&nbsp", "&nbsp"), 
                tags$a(href="https://stackoverflow.com/users/4046004/manuel-s", 
                       icon("stack-overflow ", "fa-lg"), target = "_blank")
-               ) # END p
+        ) # END p
       ) # END fluidRow
     ) # END fluidPage
   ) # END fluidPage
