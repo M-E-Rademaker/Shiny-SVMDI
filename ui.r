@@ -60,7 +60,7 @@ shinyUI({
                           ) # END p
                  ), # END div
                  tags$div(
-                   tags$img(src = "no_avatar.png", height="60", width="60", style = "border-radius: 50%"),
+                   tags$img(src = "Tommy_K.png", height="60", width="60", style = "border-radius: 50%"),
                    tags$p(tags$b("Tommy Krieger"), "is a research assistant at the University of Konstanz, Germany.", 
                           br(), tags$a(href="mailto:tommy.krieger@uni-konstanz.de", icon("envelope-o", "fa-lg"))
                           # HTML("&nbsp", "&nbsp"),  tags$a(href="http://klausgruendler.de/", icon("globe", "fa-lg"), target = "_blank")
