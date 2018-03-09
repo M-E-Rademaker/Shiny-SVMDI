@@ -15,7 +15,7 @@ shinyUI({
       ## BEGIN sidebarPanel ------------------------
       sidebarPanel(width = 3,
         fluidRow(
-          h4("Explantion"),
+          h4("Explanation"),
           helpText(
             "Chose up to 15 countries or regions to display.", 
             "To delete a selected country use backspace."
@@ -23,8 +23,8 @@ shinyUI({
           selectizeInput("select.country", label = NULL, multiple = TRUE, 
                          options = list(maxItems = 15), selected = "Germany",
                          choices = list(
-                           "Countries" = unique(dat_clean$country_new),
-                           "Regions"   = unique(dat_clean$regioniii)
+                           "Countries" = unique(dat_clean$country),
+                           "Regions"   = unique(dat_clean$region)
                          )
           ) # END selectInput select.country
         ), # END fluidRow
@@ -69,13 +69,13 @@ shinyUI({
           ) # END column
         ), # End fluidRow
         hr(),
-        h3("Explore the CSVMD index on a map"),
+        h3("Explore the SVMDI on a map"),
         wellPanel(
         helpText("Move the slider to the year of interest. Hovering over a selected country will display addtional information."),
         sliderInput("slider.year.map", label = NULL, min = 1960, max = 2014, value = 2000, sep = ""),
         leafletOutput("map")
         ), # END wellPanel
-        h3("The CSVMD index over time"),
+        h3("The SVMDI over time"),
         wellPanel(
         fluidRow(
           column(width = 4,
@@ -86,12 +86,13 @@ shinyUI({
                  ) # END sliderInput
           ), # END column
           column(width = 3,
-                 helpText("Choose the confidence intervall to be drawn"),
-                 selectInput("select.ci", label = NULL, choices = c(
-                   "None", 
-                   "90% Confidence Intervall",
-                   "95% Confidence Intervall"), selected = "None"
-                 ) # END selectInput 
+                 helpText("Draw upper and lower bound?"),
+                 radioButtons("checkbox.minmax", label = NULL, choices = c("Yes", "No"), selected = "No")
+                 # selectInput("select.ci", label = NULL, choices = c(
+                 #   "None", 
+                 #   "90% Confidence Intervall",
+                 #   "95% Confidence Intervall"), selected = "None"
+                 # ) # END selectInput 
           ), # END column
           column(width = 3,
                  helpText("Draw dichotomized SVMD index as well?"),

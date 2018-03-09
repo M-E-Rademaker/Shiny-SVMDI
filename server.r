@@ -10,22 +10,22 @@ shinyServer(function(input, output) {
     )
     
     a1 <- dat_clean %>% 
-      filter(country_new %in% input$select.country,
+      filter(country %in% input$select.country,
              between(year, input$slider.year[1], input$slider.year[2]))
     
     a2 <- dat_clean %>% 
-      filter(regioniii %in% input$select.country,
+      filter(region %in% input$select.country,
              between(year, input$slider.year[1], input$slider.year[2]))
     
     p <- ggplot(a1, aes(x = year, y = csvmdi)) +
-      geom_line(aes(color = country_new), size = 1.05) +
-      geom_line(data = a2, aes(y = regioniii_csvmdi, color = regioniii), size = 1.05) + 
+      geom_line(aes(color = country), size = 1.05) +
+      geom_line(data = a2, aes(y = region_csvmdi, color = region), size = 1.05) + 
       scale_x_continuous(breaks = seq.int(input$slider.year[1], input$slider.year[2], by = 2)) + 
-      labs(title = paste0("The CSVMD Index from ", input$slider.year[1], " until ", input$slider.year[2]),
+      labs(title = paste0("The SVMDI from ", input$slider.year[1], " until ", input$slider.year[2]),
            color = "Country/Region",
-           y = "SVMD Index",
+           y = "SVMDI",
            x = "Year",
-           caption = "Source: Gründler & Krieger (2016), Democracy and Growth: Evidence from a machine learning indicator") + 
+           caption = "Source: Gründler & Krieger (2018), Machine Learning Indicators, Political Institutions, and Economic Development") + 
       theme(
         title = element_text(size = 14),
         axis.title = element_text(size = 12, face = "bold"),
@@ -34,19 +34,14 @@ shinyServer(function(input, output) {
     
     if(input$checkbox.dsvmdi == "Yes") {
       
-      p <- p + geom_line(aes(y = dsvmdi, color = country_new), linetype = "dashed")
+      p <- p + geom_line(aes(y = dsvmdi, color = country), linetype = "dashed")
     }
     
-    if(input$select.ci == "90% Confidence Intervall") {
+    if(input$checkbox.minmax == "Yes") {
       
-    p + geom_ribbon(data = a1, aes(ymin = csvmdiq003, ymax = csvmdiq097, fill = country_new), alpha = 0.4, show.legend = FALSE) +
-        geom_ribbon(data = a2, aes(ymin = regioniii_csvmdiq003, ymax = regioniii_csvmdiq097, fill = regioniii), alpha = 0.4, show.legend = FALSE)
+    p + geom_ribbon(data = a1, aes(ymin = csvmdimin, ymax = csvmdimax, fill = country), alpha = 0.4, show.legend = FALSE) +
+        geom_ribbon(data = a2, aes(ymin = region_csvmdimin, ymax = region_csvmdimin, fill = region), alpha = 0.4, show.legend = FALSE)
 
-    } else if(input$select.ci == "95% Confidence Intervall") {
-      
-    p + geom_ribbon(aes(ymin = csvmdiq005, ymax = csvmdiq095, fill = country_new), alpha = 0.4, show.legend = FALSE) + 
-        geom_ribbon(data = a2, aes(ymin = regioniii_csvmdiq005, ymax = regioniii_csvmdiq095, fill = regioniii), alpha = 0.4, show.legend = FALSE)
-      
     } else {
     p 
     } 
@@ -61,19 +56,19 @@ shinyServer(function(input, output) {
     ## Check if at least one input was given and ask for one if not.
     validate(
       need(input$select.country != "", "Please select at least one country or region."),
-      need(!(any(input$select.country %in% unique(dat_clean$regioniii))), 
+      need(!(any(input$select.country %in% unique(dat_clean$region))), 
            "Currently only countries can be displayed on the map. To compare regions refer to the lineplot below.")
     )
      
     # Filter relevant countries and year
     dd <- dat_leaflet %>%
-      filter(country_new %in% choice.country, year == choice.year)
+      filter(country %in% choice.country, year == choice.year)
     
     ## Create labels that appear when hovering over a country
     labels <- sprintf(
       "<strong>%s</strong><br/> Year: %d<br/> CSVMD Index country: %.2f<br/> CSVMD Index region (%s): %.2f",
-      dd$country_new, dd$year, dd$csvmdi, 
-      dd$regioniii, dd$regioniii_csvmdi
+      dd$country, dd$year, dd$csvmdi, 
+      dd$region, dd$region_csvmdi
     ) %>% lapply(htmltools::HTML)
     
     ## Leaflet object
