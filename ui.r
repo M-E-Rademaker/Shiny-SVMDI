@@ -88,11 +88,6 @@ shinyUI({
           column(width = 3,
                  helpText("Draw upper and lower bound?"),
                  radioButtons("checkbox.minmax", label = NULL, choices = c("Yes", "No"), selected = "No")
-                 # selectInput("select.ci", label = NULL, choices = c(
-                 #   "None", 
-                 #   "90% Confidence Intervall",
-                 #   "95% Confidence Intervall"), selected = "None"
-                 # ) # END selectInput 
           ), # END column
           column(width = 3,
                  helpText("Draw dichotomized SVMD index as well?"),
