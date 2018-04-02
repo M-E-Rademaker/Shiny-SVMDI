@@ -21,6 +21,7 @@ shinyServer(function(input, output) {
       geom_line(aes(color = country), size = 1.05) +
       geom_line(data = a2, aes(y = region_csvmdi, color = region), size = 1.05) + 
       scale_x_continuous(breaks = seq.int(input$slider.year[1], input$slider.year[2], by = 2)) + 
+      scale_y_continuous(breaks = seq.int(0, 1, by = 0.1), limits = c(0, 1)) + 
       labs(title = paste0("The SVMDI from ", input$slider.year[1], " until ", input$slider.year[2]),
            color = "Country/Region",
            y = "SVMDI",

@@ -19,6 +19,7 @@
 library(shiny)
 library(shinythemes)
 library(tidyverse)
+library(stringr)
 library(leaflet)
 library(maps)
 library(haven)
